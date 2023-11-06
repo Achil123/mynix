@@ -1,16 +1,26 @@
 { config, lib, pkgs, ... }:
 
 {
-  systemd.services.power-tune = {
-    description = "Power Management tunings";
-    wantedBy = [ "multi-user.target" ];
-    script = ''
-      ${pkgs.powertop}/bin/powertop --auto-tune
-      ${pkgs.iw}/bin/iw dev wlp3s0 set power_save on
-      for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-        echo powersave > $cpu
-      done
-    '';
-    serviceConfig.Type = "oneshot";
+  #boot = {
+  #  kernelParams = [ "pcie_aspm.policy=powersave" ];
+  #  # blacklistedKernelModules = [ "uvcvideo" ];
+  #  extraModprobeConfig = ''
+  #    options snd_hda_intel power_save=1
+  #    options iwlwifi power_save=1 d0i3_disable=0 uapsd_disable=0
+  #    options iwldvm force_cam=0
+  #  '';
+  #  kernel.sysctl = {
+  #    "kernel.nmi_watchdog" = 0;
+  #    "vm.dirty_writeback_centisecs" = 6000;
+  #    "vm.laptop_mode" = 5;
+  #  };
+  #};
+
+  powerManagement = {
+    enable = true;
+    scsiLinkPolicy = "medium_power";
+    powertop.enable = true;
+    cpuFreqGovernor = "powersave";
   };
+  services.upower.enable = true;
 }

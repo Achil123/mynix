@@ -12,9 +12,12 @@
     # Services
     ./audio.nix
     #./avahi.nix
+    #./cpu.nix
+    #./hotspot.nix
     #./mpd.nix
     #./nextcloud.nix
     #./printing.nix
+    ./other.nix
 
     ./fonts.nix
     #./games.nix

@@ -1,13 +1,27 @@
 { config, lib, pkgs, ... }:
 {
   environment.systemPackages =  with pkgs; [
-    # System tools
-    throttled
+    # Driver
     libvdpau-va-gl
     vaapiVdpau
     intel-media-driver
     intel-ocl
     intel-vaapi-driver
+    mesa
+    xorg.xf86inputjoystick
+
+    # System tools
+    linux-wifi-hotspot
+    linux-router
+    auto-cpufreq
+    linuxPackages.cpupower
+    throttled
+    haveged
+    hdparm
+    htop
+    sdparm
+    speedtest-cli
+    macchanger
     vim-full
     wget
     unzip
@@ -30,7 +44,6 @@
     inxi
     xorg.xrandr
     xorg.libXrandr
-    xorg.xf86inputjoystick
     smartmontools
     gnupg
     pinentry-qt

@@ -11,4 +11,24 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
+
+  # Wlan
+  #networking.wlanInterfaces = {
+  #  wlan-station0 = {
+  #     device = "wlp3s0";
+  #  };
+  #  #wlan-adhoc0 = {
+  #  #  type = "ibss";
+  #  #  device = "wlp3s0";
+  #  #  mac = "02:00:00:00:00:01";
+  #  #};
+  #  #wlan-p2p0 = {
+  #  #  device = "wlp3s0";
+  #  #  mac = "02:00:00:00:00:02";
+  #  #};
+  #  wlan-ap0 = {
+  #    device = "wlp3s0";
+  #    mac = "02:00:00:00:00:03";
+  #  };
+  #};
 }

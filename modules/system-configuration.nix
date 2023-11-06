@@ -21,9 +21,6 @@
   # Backup Configuration
   system.copySystemConfiguration = true;
 
-  # Fix CPU Throttle
-  services.throttled.enable = true;
-
   # Hardware Configuration
   hardware = {
     enableRedistributableFirmware = true;
@@ -31,20 +28,13 @@
     cpu.amd.updateMicrocode = false;
     opengl.enable = true;
     opengl.driSupport32Bit = true;
-    opengl.extraPackages = with pkgs; [ intel-media-driver intel-ocl intel-vaapi-driver libvdpau-va-gl vaapiVdpau ];
-    opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-media-driver intel-vaapi-driver libvdpau-va-gl vaapiVdpau ];
+    opengl.extraPackages = with pkgs; [ intel-media-driver intel-ocl intel-vaapi-driver libvdpau-va-gl vaapiVdpau vaapi-intel-hybrid libva1 mesa ];
+    opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-media-driver intel-vaapi-driver libvdpau-va-gl vaapiVdpau mesa ];
   };
 
-  # XServer Configuration
-  services.xserver = {
-    enable = true;
-    libinput.enable = true;
-    layout = "us";
-    xkbVariant = "";
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
-
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "faaiq";
 
   # Nix Settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -56,7 +46,11 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-24.8.6"
+    ];
   };
+
 
   # gnupg
   programs.gnupg.agent = {
