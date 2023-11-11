@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./kernel.nix
+      #./kernel.nix
       ./modules/modulelist.nix
       #./profiles/powersave.nix
     ];
@@ -19,7 +19,8 @@
     loader.efi.canTouchEfiVariables = true;
     initrd.verbose = false;
     consoleLogLevel = 0;
-    #kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_5_10;
+    extraModulePackages = with config.boot.kernelPackages; [ virtualbox cpupower ];
     kernelModules = [ "msr" ];
     kernelParams = [
       "quiet"
@@ -31,6 +32,12 @@
     ];
     kernel.sysctl = {
       "net.ipv4.ip_forward" = 1;
+      "vm.swappiness" = 10;
+      "vm.vfs_cache_pressure" = 100;
+      "vm.dirty_background_ratio" = 10;
+      "vm.dirty_ratio" = 20;
+      "vm.dirty_writeback_centisecs" = 500;
+      "vm.dirty_expire_centisecs" = 3000;
     };
   };
 

@@ -15,6 +15,5 @@
     xfce.libxfce4ui
     xdg-desktop-portal-xapp
     indicator-application-gtk2
-    
   ];
 }

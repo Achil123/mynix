@@ -1,15 +1,20 @@
 { config, lib, pkgs, ... }:
 {
   fonts = {
-    fontconfig.enable = true;
     fontDir.enable = true;
+    fontconfig.enable = true;
+    fontconfig.cache32Bit = true;
+    fontconfig.subpixel.rgba = "rgb";
     enableGhostscriptFonts = true;
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "DroidSansMono" "RobotoMono" "Tinos" "Mononoki" ]; })
+      dejavu_fonts
+      noto-fonts
+      noto-fonts-color-emoji
       emojione
       fira
       fira-code
-      fira-mono
+      gyre-fonts
       iosevka
       terminus_font
       anonymousPro

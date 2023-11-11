@@ -2,14 +2,15 @@
 
 {
   boot.kernelPackages = let
-      linux_arch_pkg = { fetchurl, buildLinux, ... } @ args:
+      linux_stable_pkg = { fetchurl, buildLinux, ... } @ args:
 
         buildLinux (args // rec {
-          version = "6.5.9.arch2-1";
+          version = "6.5.10";
           modDirVersion = version;
 
           src = fetchurl {
-            url = "https://europe.mirror.pkgbuild.com/core/os/x86_64/linux-6.5.9.arch2-1-x86_64.pkg.tar.zst";
+            url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.10.tar.xz";
+            sha256 = "oV9JhgSt+PashC8XM6aUCD8j5Xi0jI6X2UttiWjlWos=";
           };
           kernelPatches = [];
 
@@ -19,7 +20,7 @@
 
           extraMeta.branch = "6.5";
         } // (args.argsOverride or {}));
-      linux_arch = pkgs.callPackage linux_arch_pkg{};
+      linux_stable = pkgs.callPackage linux_stable_pkg{};
     in 
-      pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_arch);
+      pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_stable);
 }

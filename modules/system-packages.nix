@@ -8,14 +8,27 @@
     intel-ocl
     intel-vaapi-driver
     mesa
-    xorg.xf86inputjoystick
+    libinput
+
+    # Xorg
+    #xorg.xorgserver
+    #xorg.xinit
+    #xorg.xf86inputevdev
+    #xorg.xf86inputsynaptics
+    #xorg.xf86inputlibinput
+    #xorg.xf86videointel
+    #xorg.xf86videoati
+    #xorg.xf86videonouveau
+    #xorg.fontmiscmisc
 
     # System tools
-    linux-wifi-hotspot
+    libglibutil
+    glib
+    acpilight
     linux-router
-    auto-cpufreq
     linuxPackages.cpupower
     throttled
+    thermald
     haveged
     hdparm
     htop
@@ -44,6 +57,7 @@
     inxi
     xorg.xrandr
     xorg.libXrandr
+    xorg.xf86inputjoystick
     smartmontools
     gnupg
     pinentry-qt
@@ -64,6 +78,7 @@
     duf
     powertop
     iw
+    ucs-fonts
 
     # Language
     (python311.withPackages(ps: with ps; [ dbus-python numpy requests toolz ]))

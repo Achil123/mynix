@@ -18,11 +18,13 @@
     LC_TIME = "id_ID.UTF-8";
   };
 
+
   # Backup Configuration
   system.copySystemConfiguration = true;
 
   # Hardware Configuration
   hardware = {
+    acpilight.enable =true;
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
     cpu.amd.updateMicrocode = false;
@@ -35,6 +37,13 @@
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
+
+  # Swap
+  #swapDevices = [ {
+  #  device = "/var/lib/swapfile";
+  #  size = 4096;
+  #} ];
+  zramSwap.enable = true;
 
   # Nix Settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -53,11 +62,11 @@
 
 
   # gnupg
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryFlavor = "qt";
-  };
+  #programs.gnupg.agent = {
+  #  enable = true;
+  #  enableSSHSupport = true;
+  #  pinentryFlavor = "qt";
+  #};
 
   #vim
   programs.vim = {
@@ -73,6 +82,6 @@
 
   # vboxnetwork
   environment.etc."vbox/networks.conf".text = ''
-    * 10.0.0.0/8 192.168.0.0/16
+    * 10.0.0.0/8 192.168.0.0/16 172.0.0.0/8
   '';
 }

@@ -3,10 +3,16 @@
 {
   imports = [
     # Desktop Environment & Window Manager
+    #./awesome.nix
+    #./budgie.nix
+    #./cinnamon.nix
+    #./deepin.nix
     #./gnome.nix
-    #./xfce.nix
-    ./kde.nix
+    #./kde.nix
+    ./lxqt.nix
+    #./mate.nix
     #./pantheon.nix
+    #./xfce.nix
     #./xmonad.nix
 
     # Services
@@ -18,6 +24,7 @@
     #./nextcloud.nix
     #./printing.nix
     ./other.nix
+    ./xserver.nix
 
     ./fonts.nix
     #./games.nix
