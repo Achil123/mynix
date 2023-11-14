@@ -2,20 +2,20 @@
 
 {
   imports = [
-    # Desktop Environment & Window Manager
+    # Desktop Environment & Window Manager #
     #./awesome.nix
-    #./budgie.nix
+    ./budgie.nix
     #./cinnamon.nix
     #./deepin.nix
     #./gnome.nix
     #./kde.nix
-    ./lxqt.nix
+    #./lxqt.nix
     #./mate.nix
     #./pantheon.nix
     #./xfce.nix
     #./xmonad.nix
 
-    # Services
+    # Services #
     ./audio.nix
     #./avahi.nix
     #./cpu.nix

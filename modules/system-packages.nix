@@ -20,8 +20,10 @@
     #xorg.xf86videoati
     #xorg.xf86videonouveau
     #xorg.fontmiscmisc
+    #ucs-fonts
 
     # System tools
+    alacritty
     libglibutil
     glib
     acpilight
@@ -78,7 +80,6 @@
     duf
     powertop
     iw
-    ucs-fonts
 
     # Language
     (python311.withPackages(ps: with ps; [ dbus-python numpy requests toolz ]))

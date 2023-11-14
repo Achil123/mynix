@@ -26,5 +26,13 @@
       font-awesome_4
       vistafonts
     ];
+    fontconfig = {
+      defaultFonts = {
+        emoji = [ "Noto Color Emoji" ];
+        serif = [ "Noto Sans" "Ubuntu" ];
+        sansSerif = [ "Noto Sans" "Ubuntu" ];
+        monospace = [ "Fira Mono" "Ubuntu" ];
+      };
+    };
   };
 } 
