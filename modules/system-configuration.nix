@@ -18,7 +18,6 @@
     LC_TIME = "id_ID.UTF-8";
   };
 
-
   # Backup Configuration
   system.copySystemConfiguration = true;
 
@@ -39,10 +38,6 @@
   };
 
   # Swap
-  #swapDevices = [ {
-  #  device = "/var/lib/swapfile";
-  #  size = 4096;
-  #} ];
   zramSwap.enable = true;
 
   # Nix Settings
@@ -60,7 +55,21 @@
     ];
   };
 
+  # Firefox
+  nixpkgs.config.firefox = {
+    enableGoogleTalkPlugin = true;
+    enableAdobeFlash = true;
+    enableAdobeFlashDRM = true;
+    jre = false;
+    icedtea = true;
+  };
 
+  programs.firefox.package = pkgs.firefox.override {
+    cfg = {
+      enablePlasmaBrowserIntegration = true;
+    };
+  };
+  
   # gnupg
   #programs.gnupg.agent = {
   #  enable = true;
@@ -79,6 +88,10 @@
   services.udev.packages = [
     pkgs.android-udev-rules
   ];
+
+  # Thefuck
+  programs.thefuck.enable = true;
+  programs.thefuck.alias = "fuck";
 
   # vboxnetwork
   environment.etc."vbox/networks.conf".text = ''

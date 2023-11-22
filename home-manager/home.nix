@@ -30,14 +30,21 @@
     historySubstringSearch.enable = true;
     initExtra = ''
       unsetopt nomatch
-      bindkey '^[[A' history-substring-search-up
-      bindkey '^[[B' history-substring-search-down
-      HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
     '';
+    localVariables = {
+      HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE = 1;
+      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=#663399,standout";
+    };
     shellAliases = {
+      l = "ls -alh";
       ll = "ls -l";
+      ls = "ls --color=always";
       update = "sudo nixos-rebuild switch";
+      upgrade = "sudo nixos-rebuild boot --upgrade";
+      home-update = "home-manager switch";
       hg = "history|grep";
+      del = "sudo nix-store --gc; sudo nix-collect-garbage -d";
+      home-del = "home-manager expire-generations 5sec";
     };
     zplug = {
       enable = true;
@@ -45,13 +52,30 @@
         { name = "zsh-users/zsh-autosuggestions"; }
       ];
     };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "thefuck" ];
-      theme = "jbergantine";
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      # add_newline = false;
+
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+      };
+
+      # package.disabled = true;
     };
+  };
+
+  # Git
+  programs.git = {
+    enable = true;
+    userName = "Achil123";
+    userEmail = "faaiqamarullah@gmail.com";
   };
 
   programs.home-manager.enable = true;
   programs.fzf.enable = true;
+  programs.dircolors.enable = true;
 }

@@ -29,6 +29,7 @@
     ./fonts.nix
     #./games.nix
     ./gamepad.nix
+    ./nvim.nix
     ./system-packages.nix
     ./system-configuration.nix
     ./system-networking.nix

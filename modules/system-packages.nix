@@ -23,6 +23,7 @@
     #ucs-fonts
 
     # System tools
+    tree
     alacritty
     libglibutil
     glib
@@ -37,7 +38,6 @@
     sdparm
     speedtest-cli
     macchanger
-    vim-full
     wget
     unzip
     unrar

@@ -1,26 +1,14 @@
 { config, lib, pkgs, ... }:
 {
   users.users.faaiq = {
+    shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
     isNormalUser = true;
     description = "faaiq";
-    extraGroups = [ "networkmanager" "wheel" "audio" "vboxsf" "vboxusers" "video" "input" "adbusers"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "vboxsf" "vboxusers" "video" "input" "adbusers" "kvm" ];
     packages = with pkgs; [
       firefox
     #  thunderbird
     ];
-  };
-
-  nixpkgs.config.firefox = {
-    enableGoogleTalkPlugin = true;
-    enableAdobeFlash = true;
-    enableAdobeFlashDRM = true;
-    jre = false;
-    icedtea = true;
-  };
-
-  programs.firefox.package = pkgs.firefox.override {
-    cfg = {
-      enablePlasmaBrowserIntegration = true;
-      };
   };
 }

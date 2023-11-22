@@ -7,23 +7,19 @@
     fontconfig.subpixel.rgba = "rgb";
     enableGhostscriptFonts = true;
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "DroidSansMono" "RobotoMono" "Tinos" "Mononoki" ]; })
+      (nerdfonts.override { fonts = [ "FiraMono" "FiraCode" "Mononoki" ]; })
+      comic-relief
+      corefonts
       dejavu_fonts
+      emojione
+      font-awesome_5
+      iosevka
       noto-fonts
       noto-fonts-color-emoji
-      emojione
-      fira
-      fira-code
-      gyre-fonts
-      iosevka
+      powerline-fonts
+      roboto
       terminus_font
-      anonymousPro
-      corefonts
-      inconsolata
       ubuntu_font_family
-      ttf_bitstream_vera
-      comic-relief
-      font-awesome_4
       vistafonts
     ];
     fontconfig = {
@@ -35,4 +31,4 @@
       };
     };
   };
-} 
+}

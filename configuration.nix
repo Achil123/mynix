@@ -19,7 +19,16 @@
     loader.efi.canTouchEfiVariables = true;
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelPackages = pkgs.linuxPackages_5_10;
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_10.override {
+      argsOverride = rec {
+        src = pkgs.fetchurl {
+              url = "mirror://kernel/linux/kernel/v5.x/linux-${version}.tar.xz";
+              sha256 = "sha256-nS2WH7+HSG5IsAhzJu41ywr03sA8dwc3sJhlJFcgUQQ=";
+        };
+        version = "5.10.200";
+        modDirVersion = "5.10.200";
+        };
+    });
     extraModulePackages = with config.boot.kernelPackages; [ virtualbox cpupower ];
     kernelModules = [ "msr" ];
     kernelParams = [
