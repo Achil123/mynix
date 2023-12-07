@@ -4,10 +4,14 @@
   imports = [
     # Desktop Environment & Window Manager #
     #./awesome.nix
-    ./budgie.nix
+    #./budgie.nix
+    #./bspwm.nix
     #./cinnamon.nix
     #./deepin.nix
     #./gnome.nix
+    #./hyprland.nix
+    #./herbstluftwm.nix
+    ./i3wm.nix
     #./kde.nix
     #./lxqt.nix
     #./mate.nix

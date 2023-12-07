@@ -8,7 +8,7 @@
     vimAlias = true;
     configure = {
       customRC = ''
-        set number
+        "set number
         set background=dark
         "colorscheme afterglow
         set smartindent

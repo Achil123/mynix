@@ -10,24 +10,13 @@
     mesa
     libinput
 
-    # Xorg
-    #xorg.xorgserver
-    #xorg.xinit
-    #xorg.xf86inputevdev
-    #xorg.xf86inputsynaptics
-    #xorg.xf86inputlibinput
-    #xorg.xf86videointel
-    #xorg.xf86videoati
-    #xorg.xf86videonouveau
-    #xorg.fontmiscmisc
-    #ucs-fonts
-
     # System tools
+    betterdiscordctl
+    killall
+    unar
     tree
-    alacritty
     libglibutil
     glib
-    acpilight
     linux-router
     linuxPackages.cpupower
     throttled
@@ -39,8 +28,6 @@
     speedtest-cli
     macchanger
     wget
-    unzip
-    unrar
     neofetch
     pulseaudioFull
     lsof
@@ -102,7 +89,7 @@
     hping
     sqlmap
     nikto
-  
+
     # Theme
     amber-theme
  ];

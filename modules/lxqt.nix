@@ -15,6 +15,7 @@
     lxqt.libsysstat
     lxqt.libqtxdg
     lxqt.libfm-qt
+    mate.terminal
   ];
   services.picom.enable = true;
 }

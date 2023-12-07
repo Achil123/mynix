@@ -8,29 +8,22 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #./kernel.nix
+      ./kernel/pin.nix
       ./modules/modulelist.nix
       #./profiles/powersave.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    loader.systemd-boot.enable = true;
+    loader.grub.enable = true;
+    loader.grub.device = "nodev";
+    loader.grub.efiSupport = true;
+    loader.grub.useOSProber = true;
     loader.efi.canTouchEfiVariables = true;
+    loader.efi.efiSysMountPoint = "/boot";
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_10.override {
-      argsOverride = rec {
-        src = pkgs.fetchurl {
-              url = "mirror://kernel/linux/kernel/v5.x/linux-${version}.tar.xz";
-              sha256 = "sha256-nS2WH7+HSG5IsAhzJu41ywr03sA8dwc3sJhlJFcgUQQ=";
-        };
-        version = "5.10.200";
-        modDirVersion = "5.10.200";
-        };
-    });
     extraModulePackages = with config.boot.kernelPackages; [ virtualbox cpupower ];
-    kernelModules = [ "msr" ];
     kernelParams = [
       "quiet"
       "splash"
@@ -41,7 +34,7 @@
     ];
     kernel.sysctl = {
       "net.ipv4.ip_forward" = 1;
-      "vm.swappiness" = 100;
+      "vm.swappiness" = 150;
       "vm.watermark_boost_factor" = 0;
       "vm.watermark_scale_factor" = 125;
       "vm.page-cluster" = 0;

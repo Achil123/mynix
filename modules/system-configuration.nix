@@ -69,19 +69,13 @@
       enablePlasmaBrowserIntegration = true;
     };
   };
-  
+
   # gnupg
   #programs.gnupg.agent = {
   #  enable = true;
   #  enableSSHSupport = true;
   #  pinentryFlavor = "qt";
   #};
-
-  #vim
-  programs.vim = {
-    defaultEditor = true;
-    package = pkgs.vim-full;
-  };
 
   # adb
   programs.adb.enable = true;

@@ -7,12 +7,12 @@
     fontconfig.subpixel.rgba = "rgb";
     enableGhostscriptFonts = true;
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraMono" "FiraCode" "Mononoki" ]; })
+      (nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraMono" "FiraCode" "Mononoki" ]; })
       comic-relief
       corefonts
       dejavu_fonts
       emojione
-      font-awesome_5
+      font-awesome_4
       iosevka
       noto-fonts
       noto-fonts-color-emoji
