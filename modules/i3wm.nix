@@ -3,7 +3,6 @@
 {
   environment.systemPackages =  with pkgs; [
     # Xorg
-    xorg.xbacklight
     xorg.xorgserver
     xorg.xinit
     xorg.xf86inputevdev
@@ -19,6 +18,7 @@
   environment.pathsToLink = [ "/libexec" ];
 
   programs.dconf.enable = true;
+  services.blueman.enable = true;
 
   services.xserver = {
     displayManager = {
@@ -29,11 +29,14 @@
       enable = true;
       package = pkgs.i3-rounded;
       extraPackages = with pkgs; [
+        pavucontrol
+        sakura
+        xfce.thunar
         calc
         pywal
         networkmanager_dmenu
+        networkmanagerapplet
         rofi
-        kitty
         polybarFull
         dunst
         blueman
@@ -44,6 +47,10 @@
         libnotify
         maim
         feh
+        xdotool
+        libcanberra
+        imagemagick
+        sublime
       ];
     };
   };

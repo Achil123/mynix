@@ -4,7 +4,7 @@
   # User
   home.username = "faaiq";
   home.homeDirectory = "/home/faaiq";
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 
   # Package
   home.packages = with pkgs; [
@@ -25,7 +25,7 @@
     enableAutosuggestions = true;
     history = {
       ignoreAllDups = true;
-      ignorePatterns = [ "rm *" "pkill *" "sudo rm *" ];
+      ignorePatterns = [ "rm *" "pkill *" "kill *" "killall *" "sudo rm *" "sudo pkill *" "sudo kill *" "sudo killall *" ];
     };
     historySubstringSearch.enable = true;
     initExtra = ''
@@ -46,25 +46,10 @@
       del = "sudo nix-store --gc; sudo nix-collect-garbage -d";
       home-del = "home-manager expire-generations 5sec";
     };
-    zplug = {
+    oh-my-zsh = {
       enable = true;
-      plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; }
-      ];
-    };
-  };
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      # add_newline = false;
-
-      character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
-      };
-
-      # package.disabled = true;
+      plugins = [ "git" "thefuck" ];
+      theme = "robbyrussell";
     };
   };
 

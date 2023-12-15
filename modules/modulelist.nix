@@ -2,26 +2,31 @@
 
 {
   imports = [
-    # Desktop Environment & Window Manager #
-    #./awesome.nix
+    # Desktop Environment #
     #./budgie.nix
-    #./bspwm.nix
     #./cinnamon.nix
     #./deepin.nix
     #./gnome.nix
-    #./hyprland.nix
-    #./herbstluftwm.nix
-    ./i3wm.nix
     #./kde.nix
     #./lxqt.nix
     #./mate.nix
     #./pantheon.nix
     #./xfce.nix
+
+    # Window Manager #
+    #./awesome.nix
+    #./bspwm.nix
+    #./hyprland.nix
+    #./herbstluftwm.nix
+    #./i3wm.nix
+    #./openbox.nix
+    ./ratpoison.nix
     #./xmonad.nix
 
     # Services #
     ./audio.nix
     #./avahi.nix
+    ./backup.nix
     #./cpu.nix
     #./hotspot.nix
     #./mpd.nix

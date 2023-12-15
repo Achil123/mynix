@@ -11,6 +11,9 @@
     libinput
 
     # System tools
+    gnumake
+    lm_sensors
+    bluetooth_battery
     betterdiscordctl
     killall
     unar
@@ -72,7 +75,10 @@
     (python311.withPackages(ps: with ps; [ dbus-python numpy requests toolz ]))
 
     # Utilities
+    google-chrome
+    microsoft-edge
     discord
+    spotify
     zoom-us
     virt-viewer
     teams-for-linux

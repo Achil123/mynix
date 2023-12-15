@@ -5,11 +5,18 @@
     pulseaudio.package = pkgs.pulseaudioFull;
     pulseaudio.enable = true;
     pulseaudio.support32Bit = true;
+    pulseaudio.extraConfig = ''
+      load-module module-bluetooth-discover
+      load-module module-switch-on-connect
+      load-module module-filter-heuristics
+      load-module module-filter-apply
+    '';
     pulseaudio.daemon.config = {
       flat-volumes = "no";
     };
-    bluetooth.enable = true;
   };
+
+  nixpkgs.config.pulseaudio = true;
 
   # Pipewire
   #sound.enable = true;

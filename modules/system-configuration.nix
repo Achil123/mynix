@@ -18,12 +18,9 @@
     LC_TIME = "id_ID.UTF-8";
   };
 
-  # Backup Configuration
-  system.copySystemConfiguration = true;
-
   # Hardware Configuration
   hardware = {
-    acpilight.enable =true;
+    acpilight.enable = true;
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
     cpu.amd.updateMicrocode = false;
@@ -36,6 +33,22 @@
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
+
+  # Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        ControllerMode = "bredr";
+      };
+    };
+  };
+
+  # Mic
+  #programs.noisetorch = {
+  #  enable = true;
+  #  package = pkgs.noisetorch;
+  #};
 
   # Swap
   zramSwap.enable = true;
@@ -91,4 +104,11 @@
   environment.etc."vbox/networks.conf".text = ''
     * 10.0.0.0/8 192.168.0.0/16 172.0.0.0/8
   '';
+
+  # Variable
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    TERM = "xterm-256color";
+  };
 }

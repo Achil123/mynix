@@ -6,6 +6,9 @@
     networkmanager.enable = true;
     networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
+    extraHosts = ''
+    192.168.0.11 gitlab-adinusa.id
+    '';
   };
 
   # Wireless

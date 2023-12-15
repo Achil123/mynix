@@ -13,18 +13,20 @@
     xorg.xf86videonouveau
     xorg.fontmiscmisc
     ucs-fonts
-    dmenu
   ];
 
   environment.pathsToLink = [ "/libexec" ];
 
+  programs.dconf.enable = true;
+  services.blueman.enable = true;
+
   services.xserver = {
     displayManager = {
-      defaultSession = "none+herbstluftwm";
+      defaultSession = "none+openbox";
     };
 
-    windowManager.herbstluftwm = {
+    windowManager.openbox = {
       enable = true;
-      };
+    };
   };
 }
